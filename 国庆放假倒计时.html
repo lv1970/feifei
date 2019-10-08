@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <style>
+        h1 {
+            background: yellow;
+            width: 1310px;
+            margin: 280px auto;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+<h1 id="interval"></h1>
+<script>
+    var str = '2015-08-24';
+
+    console.log(Date.parse(str));
+
+    var d = new Date(str);
+    console.log(d.getTime());
+    console.log(d - 0);
+    setInterval(function () {
+        var d1 = new Date();
+        var d2 = new Date('2019-09-30 17:00:00');
+
+        var milliseconds = d2 - d1;
+
+        console.log(milliseconds);
+        var days = parseInt(milliseconds / (24 * 60 * 60 * 1000));
+        milliseconds -= days * 24 * 60 * 60 * 1000;
+        var hours = parseInt(milliseconds / (60 * 60 * 1000));
+        milliseconds -= hours * 60 * 60 * 1000;
+        var minutes = parseInt(milliseconds / (60 * 1000));
+        milliseconds -= minutes * 60 * 1000;
+        var second = parseInt(milliseconds / 1000);
+
+        document.getElementById('interval').innerHTML =
+            '<h1>' +
+            ' 距离国庆假期还有 ' +
+            days +
+            ' 天 ' +
+            hours +
+            ' 小时 ' +
+            minutes +
+            ' 分 ' +
+            second +
+            ' 秒' +
+            '</h1>';
+    }, 1000);
+    document.body.onselectstart = function () {
+        return false;
+    }
+</script>
+</body>
+</html>
